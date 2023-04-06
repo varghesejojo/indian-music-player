@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<script>
+    function myfun() {
+                          alert("song added");
+                        }
+</script>
+<center>
+<div>
+<div>
+    <div class="container-fluid p-5">
+        <div>
+            <h1>Upload Your Favourite </h1><br>
+
+            <form action="{% url 'songapp:add_song' %}" method="post" enctype="multipart/form-data">
+
+                {% csrf_token %}
+
+                TITLE<BR>
+                <input type="text" name="title" placeholder="title"><br>
+            ARTIST<br>
+            <input type="text" name="artist" placeholder="artist"><br>
+
+                IMAGE<BR>
+                <input type="file" name="image" placeholder="image"><br>
+                AUDIO FILE<BR>
+                <input type="file" name="audio_file" placeholder="audio_file"><br>
+
+                DURATION<br>
+                <input type="text" name="duration" placeholder="duration"><br>
+
+
+            <button type="submit" class="btn btn-success" onclick="myfun()">submit</button>
+</form>
+    </div>
+</div>
+    </div>
+</div>
+</center>
+
+{% endblock %}

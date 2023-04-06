@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class=" p-5 bg-dark text-white ">
+<div class=" p-5 bg-dark text-white" >
+<div class=" p-5 bg-dark text-white  ">
+    <div class="card bg-dark text-white" >
+        <div class="row">
+            <div class="col-6">
+                <img src="{{ song.image.url }}" class="card-img" alt="..." style="width:25%">
+                <div class="card-img-top">
+                <h3 class="card-title" >{{ song.title }}</h3>
+                <h6 class="card-title">{{ song.artist }}</h6>
+                </div>
+            </div>
+            <div class="col-6 pt-10  mt-10" >
+              <audio controls>
+                <source src="{{ song.audio_file.url }}" type="audio/mpeg">
+                <source src="myAudio.ogg" type="audio/ogg">
+                <p>Your browser doesn't support HTML5 audio. Here is
+                   a <a href="myAudio.mp3">link to the audio</a> instead.</p>
+              </audio>
+
+
+                  <form method="post">
+                        {% csrf_token %}
+
+                        {% if is_favourite %}
+                      <script>
+                        function myfun() {
+                                     alert("song remove to playlist");
+                                }
+                      </script>
+
+                        <span class="d-flex align-items-center mt-2 ml-2">
+                            <!-- <i class="heart fa fa-heart my-auto"></i> -->
+                            <button type="submit" name="rm-fav" onclick="myfun()" class="btn btn-danger btn-block"
+                                style="width: 348px;margin-left:-8px;background-color: red;">Remove from song</button>
+                        </span>
+                        {% else %}
+                      <script>
+                        function myfun() {
+                                        alert("song add to playlist");
+                        }
+                      </script>
+                        <span class="d-flex align-items-center mt-2 ml-2">
+                            <!-- <i class="heart fa fa-heart my-auto"></i> -->
+                            <button type="submit" name="add-fav" onclick="myfun()" class="btn btn-danger btn-block"
+                                style="width: 358px;margin-left:-8px;background-color: red;"><i class="heart fa fa-heart-o my-auto" style="color:white"></i> Add to playlist</button>
+
+                            <!-- <input type="submit" id="favbtn" class="btn btn-primary" name="add-fav" value="Add to Favourites"> -->
+                        </span>
+
+                        {% endif %}
+                    </form>
+                 </div>
+                </div>
+            </div>
+          </div>
+    </div>
+    </div>
+
+
+
+{% endblock content%}

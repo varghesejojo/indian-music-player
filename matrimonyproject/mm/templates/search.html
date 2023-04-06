@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div>
+    <p class="text-center my_search_text">you have seached for:<b>"{{query}}"</b></p>
+</div>
+<div class="container">
+    <div class="row mx_auto">
+        {% for songs in songs %}
+            <div class="my_bottom_margin col-9 col-sm-12  col-md-4 col-lg-4" style="margin-bottom:20px">
+                <div class="card text-center" style="min-width:18rem;">
+                    <a href="{{songs.get_url}}"><img class="card-img-top my_image" height="300px" width="50px" src="{{songs.image.url}}" alt="{{songs.name}}"></a>
+                    <div class="card-body bg-dark text-white text-center">
+                        <h4><a href="{% url 'songapp:play' songs.id %}">{{songs.title}}</a></h4>
+                        <p>{{songs.artist}}</p>
+                        <audio controls>
+                <source src="{{ songs.audio_file.url }}" type="audio/mpeg">
+                <source src="myAudio.ogg" type="audio/ogg">
+                <p>Your browser doesn't support HTML5 audio. Here is
+                   a <a href="myAudio.mp3">link to the audio</a> instead.</p>
+              </audio>
+
+
+                    </div>
+                </div>
+            </div>
+
+        {% empty %}
+        <div class="row mx-auto">
+        <p class="text-center my_search_text">0 result found</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+{% endblock %}

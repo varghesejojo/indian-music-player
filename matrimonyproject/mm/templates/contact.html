@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+#com {
+  width: 800px;
+  padding: 30px;
+  border: 5px solid gray;
+  margin: 0;
+}
+</style>
+<div class="container">
+        <div class="row">
+
+            <div class="col-sm-6 mx-auto" style="margin-top: 70px">
+                <div id="com">
+
+                <h3>do you have any issue plz contact our team</h3>.<br>
+                <a href="{% url 'complaintapp:comp' %}">click here
+
+  </a>
+                    </div>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}
